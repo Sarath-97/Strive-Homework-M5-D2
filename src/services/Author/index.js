@@ -28,6 +28,8 @@ authorRouter.get("/",(request, response)=>{
     response.send(JSON.parse(fileContent)) //JSON.parse converts the buffer to readable content
 })
 
+
+// change
 authorRouter.get("/:id",(request, response)=>{
 
     const authors = JSON.parse(fs.readFileSync(authorJSONpath))
