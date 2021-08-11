@@ -13,7 +13,7 @@ const currentDirPath = dirname(currentFilePath)
 
 //join folder path with author.json
 
-const authorJSONpath = join(currentDirPath,"Author.json")
+const authorJSONpath = join(currentDirPath,"author.json")
 
 authorRouter.post("/",(request, response)=>{
 
@@ -23,14 +23,20 @@ authorRouter.get("/",(request, response)=>{
 
     //Reading Author.json file
     const fileContent = fs.readFileSync(authorJSONpath)
-    
-    console.log(fileContent.toString());
+
     //Sending response to postman 
-    response.send(JSON.parse(fileContent))
+    response.send(JSON.parse(fileContent)) //JSON.parse converts the buffer to readable content
 })
 
 authorRouter.get("/:id",(request, response)=>{
-    response.send("hello boii")
+
+    const authors = JSON.parse(fs.readFileSync(authorJSONpath))
+
+    // console.log("student ID: ", request.params.id);
+
+    const author = authors.find(a => a.id === request.params.id )
+
+    response.send()
 })
 
 authorRouter.put("/:id",(request, response)=>{
