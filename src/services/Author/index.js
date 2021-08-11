@@ -1,7 +1,7 @@
 import express from "express"
 import  { fileURLToPath }  from "url"
 import { dirname,join } from "path"
-import fs from "fs" //this is to intract to file system
+import fs, { readFileSync } from "fs" //this is to intract to file system
 import uniqid from "uniqid"
 
 
@@ -84,14 +84,26 @@ try {
 
 authorRouter.put("/:id",(request, response)=>{
 
+    const authors = JSON.parse(fs.readFileSync(authorJSONpath))
+
+    const remainingAuthors = authors.filter(a => a.id !== request.params.id)
+
+    const  updatedAuthors = {...request.body,id: request.params.id}
+
+    remainingAuthors.push(updatedAuthors)
+
+    fs.writeFileSync(authorJSONpath, JSON.stringify(remainingAuthors))
+
+    response.send(updatedAuthors) 
+
 })
 
 authorRouter.delete("/:id",(request, response)=>{
     const authors = JSON.parse(fs.readFileSync(authorJSONpath))
 
-    const remainingStudents = authors.filter(a => a.id !== request.params.id)
+    const remainingAuthors = authors.filter(a => a.id !== request.params.id)
 
-    fs.writeFileSync(authorJSONpath, JSON.stringify(remainingStudents))
+    fs.writeFileSync(authorJSONpath, JSON.stringify(remainingAuthors))
 
     response.status(204).send()
 })
