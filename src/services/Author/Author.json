@@ -1,3 +1,48 @@
 [
-
+  {
+    "id": "1",
+    "name": "sarath",
+    "surname": "kumar",
+    "date of birth": "05/05/1997"
+  },
+  {
+    "id": "2",
+    "name": "james",
+    "surname": "murry",
+    "date of birth": "11/05/1998"
+  },
+  {
+    "id": "12tt1as8ks7nhbne",
+    "name": "emerald",
+    "surname": "martin",
+    "avatar": "https://ui-avatars.com/api/?name=emerald+martin",
+    "createdAt": "2021-08-11T15:31:29.977Z",
+    "updatedAt": "2021-08-11T15:31:29.977Z"
+  },
+  {
+    "id": "12tt1nb4ks7u3wef",
+    "name": "yo",
+    "surname": "man",
+    "avatar": "https://ui-avatars.com/api/?name=yo+man",
+    "createdAt": "2021-08-11T18:37:00.998Z",
+    "updatedAt": "2021-08-11T18:37:00.998Z"
+  },
+  {
+    "name": "tyu",
+    "surname": "ytuty",
+    "eamail": "tyutyu@gmail.com",
+    "date of birth": "15/09/1995",
+    "id": "12tt1o8kks7uidnh",
+    "createdAt": "2021-08-11T18:48:16.540Z",
+    "updatedAt": "2021-08-11T18:48:16.540Z"
+  },
+  {
+    "name": "ne5t",
+    "surname": "yttrhtrhy",
+    "eamail": "tyutyu@gmail.com",
+    "date of birth": "15/09/1995",
+    "id": "12tt1o70ks7ukxmc",
+    "createdAt": "2021-08-11T18:50:15.731Z",
+    "updatedAt": "2021-08-11T18:50:15.731Z"
+  }
 ]
