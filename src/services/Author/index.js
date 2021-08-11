@@ -32,11 +32,11 @@ authorRouter.get("/:id",(request, response)=>{
 
     const authors = JSON.parse(fs.readFileSync(authorJSONpath))
 
-    // console.log("student ID: ", request.params.id);
+    console.log("student ID: ", request.params.id);
 
     const author = authors.find(a => a.id === request.params.id )
 
-    response.send()
+    response.send(author)
 })
 
 authorRouter.put("/:id",(request, response)=>{
