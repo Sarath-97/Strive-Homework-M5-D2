@@ -3,6 +3,7 @@ import cors from "cors"
 import listEndpoints from "express-list-endpoints";
 import authorRouter from "./services/Author/index.js";
 import bookRouter from "./services/books/index.js";
+import fileRouter from "./services/files/index.js";
 
 const server = express()
 const port = 3001
@@ -14,6 +15,7 @@ server.use(express.json())
 
 server.use("/author",authorRouter)
 server.use("/books",bookRouter)
+server.use("/files", fileRouter)
 
 console.table(listEndpoints(server))
 

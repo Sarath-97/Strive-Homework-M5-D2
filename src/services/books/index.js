@@ -34,7 +34,7 @@ booksRouter.post("/", (req, res) => {
 
   writeBooks(books)
 
-  res.status(201).send({id: newBook.id})
+  res.status(201).send(newBook)
 })
 
 booksRouter.put("/:id", (req, res) => {
