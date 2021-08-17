@@ -1,4 +1,18 @@
-{
-    "name": "To kill a mocking bird",
-    "Author": "some guy"
-}
+[
+    {
+        "id":"1",
+        "title": "To kill a mocking bird",
+        "author": "some guy",
+        "price":"€10.00"
+        
+    },
+
+    {
+        "id":"2",
+        "title": "Boy in striped pajamas",
+        "category":"book"
+        "author": "some guy",
+        "price":"€10.00"
+        
+    }
+]
