@@ -6,7 +6,7 @@ import bookRouter from "./services/books/index.js";
 import fileRouter from "./services/files/index.js";
 
 const server = express()
-const port = 3001
+const PORT = process.env.PORT
 
 server.use(cors())
 server.use(express.json())
@@ -19,6 +19,6 @@ server.use("/files", fileRouter)
 
 console.table(listEndpoints(server))
 
-server.listen (port,() =>{
-    console.log(`server listening on port: ${port}`);
+server.listen (PORT,() =>{
+    console.log(`server listening on port: ${process.env.PORT}`);
 })

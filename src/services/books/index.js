@@ -1,33 +1,35 @@
 import express from 'express'
 import fs from 'fs'
-import {fileURLToPath} from 'url'
-import {dirname, join} from 'path'
+import { getBooks, writeBooks } from '../../lib/fs-tools'
 import uniqid from "uniqid"
- 
-const booksJSONPath = join(dirname(fileURLToPath(import.meta.url)), "books.json")
+
 
 const booksRouter = express.Router()
 
-const getBooks = () => JSON.parse(fs.readFileSync(booksJSONPath))
+booksRouter.get("/", async (req, res,next) => {
 
+ try {
 
-const writeBooks = content => fs.writeFileSync(booksJSONPath, JSON.stringify(content))
+  const books = await getBooks()
 
-booksRouter.get("/", (req, res) => {
-  const books = getBooks()
   res.send(books)
+   
+ } catch (error) {
+   next(error)
+ }
+
 })
 
-booksRouter.get("/:id", (req, res) => {
-  const books = getBooks()
+booksRouter.get("/:id", async (req, res,next) => {
+  const books = await getBooks()
 
   const book = books.find(b => b.id === req.params.id)
   res.send(book)
 })
 
-booksRouter.post("/", (req, res) => {
+booksRouter.post("/", async (req, res,next) => {
 
-  const books = getBooks()
+  const books = await getBooks()
   const newBook = {...req.body, id: uniqid(), createdAt: new Date()}
 
   books.push(newBook)
@@ -37,8 +39,8 @@ booksRouter.post("/", (req, res) => {
   res.status(201).send(newBook)
 })
 
-booksRouter.put("/:id", (req, res) => {
-  const books = getBooks()
+booksRouter.put("/:id", async (req, res,next) => {
+  const books = await getBooks()
 
   const remainingBooks = books.filter(b => b.id !== req.params.id)
 
@@ -52,9 +54,9 @@ booksRouter.put("/:id", (req, res) => {
 
 })
 
-booksRouter.delete("/:id", (req, res) => {
+booksRouter.delete("/:id", async (req, res,next) => {
 
-  const books = getBooks()
+  const books = await getBooks()
 
   const remainingBooks = books.filter(b => b.id !== req.params.id)
 

@@ -16,7 +16,7 @@ const currentDirPath = dirname(currentFilePath)
 
 //join folder path with author.json
 
-const authorJSONpath = join(currentDirPath,"author.json")
+const authorJSONpath = join(currentDirPath,"../../data/author.json")
 
 authorRouter.post("/",(request, response)=>{
 

@@ -3,7 +3,7 @@ import multer from "multer"
 
 const fileRouter = express.Router()
 
-fileRouter.post("/uplaodAvatar",multer().single("avatar"),async (req,res,next) =>{
+fileRouter.post("/uploadAvatar",multer().single("avatar"),async (req,res,next) =>{
     try {
         console.log(req.file);
         res.send("uploaded")
