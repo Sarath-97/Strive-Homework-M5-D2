@@ -6,10 +6,10 @@ const booksRouter = express.Router();
 
 booksRouter.get("/", async (req, res, next) => {
   try {
-    const books = await getBooks();
     console.log("Qurey params = ", req.query);
-    if (req.query && req.query.title) {
-      const filteredBooks = books.filter((b = b.title === req.params.title));
+    const books = await getBooks();
+    if (req.query && req.query.category) {
+      const filteredBooks = books.filter(b => b.category === req.query.category);
       res.send(filteredBooks);
     } else {
       res.send(books);
@@ -34,15 +34,22 @@ booksRouter.get("/:id", async (req, res, next) => {
 booksRouter.post("/", async (req, res, next) => {
   try {
 
-    const books = await getBooks();
-    
-    const newBook = { id: uniqid(), ...req.body, createdAt: new Date() };
+    try {
+
+      const books = await getBooks();
+
+    const newBook = { id: uniqid(), ...req.body, createdAt: new Date(),updatedAt: new Date() };
 
     books.push(newBook);
 
     await writeBooks(books);
 
     res.status(201).send(newBook);
+      
+    } catch (error) {
+      next(error)
+    }
+    
   } catch (error) {
     next(error);
   }
