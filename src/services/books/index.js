@@ -1,19 +1,26 @@
 import express from "express";
 import { getBooks, writeBooks } from "../../lib/fs-tools.js";
 import uniqid from "uniqid";
+import createHttpError from "http-errors";
+import { queryErrorHandler } from "../../errorHandlers.js";
+import { validationResult } from "express-validator";
+import { bookValidationMiddleware } from "./validator.js";
 
 const booksRouter = express.Router();
 
-booksRouter.get("/", async (req, res, next) => {
+booksRouter.get("/",async (req, res, next) => {
   try {
+
     console.log("Qurey params = ", req.query);
-    const books = await getBooks();
+
+      const books = await getBooks();
     if (req.query && req.query.category) {
-      const filteredBooks = books.filter(b => b.category === req.query.category);
+     const filteredBooks = books.filter(b => b.category === req.query.category);
       res.send(filteredBooks);
     } else {
       res.send(books);
     }
+    
   } catch (error) {
     next(error);
   }
@@ -31,25 +38,26 @@ booksRouter.get("/:id", async (req, res, next) => {
   }
 });
 
-booksRouter.post("/", async (req, res, next) => {
+booksRouter.post("/", bookValidationMiddleware, async (req, res, next) => {
   try {
+    const errorList = validationResult(req)
 
-    try {
+    if(!errorList.isEmpty()){
 
+      next(createHttpError(400, { errorList }))
+
+    }else{
       const books = await getBooks();
 
-    const newBook = { id: uniqid(), ...req.body, createdAt: new Date(),updatedAt: new Date() };
+      const newBook = { id: uniqid(), ...req.body, createdAt: new Date(),updatedAt: new Date() };
+  
+      books.push(newBook);
+  
+      await writeBooks(books);
+  
+      res.status(201).send(newBook);
 
-    books.push(newBook);
-
-    await writeBooks(books);
-
-    res.status(201).send(newBook);
-      
-    } catch (error) {
-      next(error)
     }
-    
   } catch (error) {
     next(error);
   }
