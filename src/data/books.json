@@ -1,12 +1,5 @@
 [
   {
-    "id": "2",
-    "title": "Boy in striped pajamas",
-    "category": "book",
-    "author": "some guy",
-    "price": "€10.00"
-  },
-  {
     "title": "Parry Hotter",
     "category": "book",
     "author": "JJ.something",
@@ -29,5 +22,15 @@
     "author": "JJ.something",
     "createdAt": "2021-08-17T22:49:39.189Z",
     "updatedAt": "2021-08-17T22:49:39.189Z"
+  },
+  {
+    "id": "12ttz0wkshm17ih",
+    "title": "Boy in striped pajamas",
+    "category": "book",
+    "author": "some guy",
+    "cover": "https://picsum.photos/200/",
+    "price": "€10.00",
+    "createdAt": "2021-08-18T14:48:40.265Z",
+    "updatedAt": "2021-08-18T14:48:40.265Z"
   }
 ]
