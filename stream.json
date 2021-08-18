@@ -1,0 +1,33 @@
+[
+  {
+    "id": "2",
+    "title": "Boy in striped pajamas",
+    "category": "book",
+    "author": "some guy",
+    "price": "€10.00"
+  },
+  {
+    "title": "Parry Hotter",
+    "category": "book",
+    "author": "JJ.something",
+    "price": "€20.00",
+    "id": "12ttl94ksgm52tg"
+  },
+  {
+    "id": "12tt184oksgnroa8",
+    "title": "Parry Hotter",
+    "category": "book",
+    "author": "JJ.something",
+    "price": "",
+    "createdAt": "2021-08-17T22:49:28.495Z",
+    "updatedAt": "2021-08-17T22:49:28.495Z"
+  },
+  {
+    "id": "12tt184oksgnrwj9",
+    "title": "Parry Hotter",
+    "category": "book",
+    "author": "JJ.something",
+    "createdAt": "2021-08-17T22:49:39.189Z",
+    "updatedAt": "2021-08-17T22:49:39.189Z"
+  }
+]
