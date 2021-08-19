@@ -11,8 +11,8 @@ import fs from "fs"
 //     console.log("Stream successsful");
 // })
 
+/* ********* TRANSFORMING FILE TO ANOTHER FILE EXTENSION TO NEW JSON FILE************* */
 import { createGzip } from "zlib"
-/* ********* tRANSFORMING FILE TO ANOTHER FILE EXTENSION TO NEW JSON FILE************* */
 
 const source =fs.createReadStream("./src/data/author.json")
 const desitnation= fs.createWriteStream("author.json.gz")
