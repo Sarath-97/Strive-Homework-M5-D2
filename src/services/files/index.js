@@ -27,8 +27,8 @@ fileRouter.get("/download", async (req, res, next) => {
     try {
         //source and destination
 
-        res.setHeader("Content-Dispositon", "attachment; filename = author.json")
-        const source = fs.createReadStream("./src/data/author.json")
+        res.setHeader("Content-Dispositon", "attachment; filename=author.json")
+        const source = getAuthorReadableStream()
         const destination = res
 
         pipeline(source, destination , err => {
@@ -45,7 +45,7 @@ fileRouter.get("/CSVDownload", async (req,res,next) => {
     try {
         const filename = "test.csv"
         res.setHeader("Content-Dispostion", `attachment; filename=${filename}`)
-        const source = fs.createReadStream("./src/data/author.json")
+        const source = getAuthorReadableStream()
         const transform = new json2csv.Transform({fields: ["title","category","author","price"]})
         const destination = res
 

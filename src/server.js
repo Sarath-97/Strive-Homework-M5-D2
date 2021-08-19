@@ -18,7 +18,7 @@ server.use(express.json())
 server.use("/author",authorRouter)
 server.use("/books",bookRouter)
 server.use("/files", fileRouter)
-server.use("/user",userRouter)
+server.use("/users",userRouter)
 
 console.table(listEndpoints(server))
 

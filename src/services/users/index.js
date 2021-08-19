@@ -3,8 +3,11 @@ import { sendMail } from "../../lib/email.js"
 
 const userRouter = express.Router()
 
-userRouter.post("/sendmail", async (req,res,next)=>{
-    const {email} = req.body
+userRouter.post("/sendMail", async (req,res,next)=>{
+
+    try {
+
+        const {email} = req.body
 
     //send email
 
@@ -13,6 +16,10 @@ userRouter.post("/sendmail", async (req,res,next)=>{
     //send proper response
 
     res.send("Email Sent!")
+        
+    } catch (error) {
+        next(error)
+    }
 })
 
 export default userRouter

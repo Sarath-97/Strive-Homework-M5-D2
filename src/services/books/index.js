@@ -2,7 +2,6 @@ import express from "express";
 import { getBooks, writeBooks } from "../../lib/fs-tools.js";
 import uniqid from "uniqid";
 import createHttpError from "http-errors";
-import { queryErrorHandler } from "../../errorHandlers.js";
 import { validationResult } from "express-validator";
 import { bookValidationMiddleware } from "./validator.js";
 
